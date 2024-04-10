@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Pedidos</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto py-8">
+        <h1 class="text-3xl font-bold mb-8 text-center">Lista de Pedidos</h1>
+        <a href="/admin" class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-700 mb-4 block text-center">Editar Menús</a>
+        <div class="overflow-x-auto">
+            <table class="min-w-full bg-white rounded-lg shadow-lg">
+                <thead>
+                    <tr>
+                        <th class="px-6 py-3 bg-gray-300 text-left text-xs leading-4 font-semibold text-gray-800 uppercase tracking-wider">ID de Pedido</th>
+                        <th class="px-6 py-3 bg-gray-300 text-left text-xs leading-4 font-semibold text-gray-800 uppercase tracking-wider">ID de Usuario</th>
+                        <th class="px-6 py-3 bg-gray-300 text-left text-xs leading-4 font-semibold text-gray-800 uppercase tracking-wider">ID de Menú</th>
+                        <th class="px-6 py-3 bg-gray-300 text-left text-xs leading-4 font-semibold text-gray-800 uppercase tracking-wider">Cantidad</th>
+                        <th class="px-6 py-3 bg-gray-300 text-left text-xs leading-4 font-semibold text-gray-800 uppercase tracking-wider">Fecha</th>
+                        <th class="px-6 py-3 bg-gray-300 text-left text-xs leading-4 font-semibold text-gray-800 uppercase tracking-wider">Eliminar Pedidos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for pedido in pedidos %}
+                    <tr>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ pedido[0] }}</td>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ pedido[1] }}</td>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ pedido[2] }}</td>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ pedido[3] }}</td>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">{{ pedido[4] }}</td>
+                        <td>
+                            <form action="/delete_order" method="get">
+                            <input type="hidden" name="pedido" value="{{ pedido[0] }}" />
+                            <button type="submit" class="text-red-500 hover:text-red-700">Remove</button>
+                          </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+

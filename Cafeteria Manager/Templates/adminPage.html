@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administration panel</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+  <div class="container mx-auto py-8">
+    <h1 class="text-3xl font-bold mb-8">Administration panel</h1>
+    
+    <div class="mb-8">
+      <form action="insert_menu" method="post">
+        <h2 class="text-xl font-bold mb-4">Add menu</h2>
+          <div class="mb-4">
+            <label for="nombre_menu" class="block text-gray-700 font-bold mb-2">Menu name:</label>
+            <input type="text" id="nombre_menu" name="nombre_menu" class="w-full rounded-md border-gray-300 px-4 py-2" required>
+          </div>
+          <div class="mb-4">
+            <label for="descripcion" class="block text-gray-700 font-bold mb-2">Description:</label>
+            <textarea id="descripcion" name="descripcion" class="w-full rounded-md border-gray-300 px-4 py-2" required></textarea>
+          </div>
+          <div class="mb-4">
+            <label for="precio" class="block text-gray-700 font-bold mb-2">Price:</label>
+            <input type="number" id="precio" name="precio" class="w-full rounded-md border-gray-300 px-4 py-2" step="0.01" required>
+          </div>
+          <div class="mb-4">
+            <label for="URL" class="block text-gray-700 font-bold mb-2">URL de la imagen:</label>
+            <input type="text" id="URL" name="URL" class="w-full rounded-md border-gray-300 px-4 py-2" step="0.01" required>
+          </div>
+          <div class="mb-4">
+            <label for="idturno" class="block text-gray-700 font-bold mb-2">Shift:</label>
+            <select id="idturno" name="idturno" class="w-full rounded-md border-gray-300 px-4 py-2" required>
+              <option value="1">Breakfast</option>
+              <option value="2">Lunch</option>
+              <option value="3">Dinner</option>
+              <option value="4">Breakfast-Lunch</option>
+              <option value="5">Breakfast-Dinner</option>
+              <option value="6">Lunch-Dinner</option>
+            </select>
+          </div>
+          <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Save</button>
+      </form>
+      <br>
+      <form action="tablasAdmin" method="post">
+      <button href="/tablasAdmin" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">Remove or edit menus</button>
+      </form>
+      <br>
+      <form action="pedidos">
+        <button href="/pedidos" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">See orders</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
